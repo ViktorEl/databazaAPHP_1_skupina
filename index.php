@@ -18,21 +18,32 @@
         if(isset($_POST["tlacidlo"])) {
             if(isset($_POST["login"]) && isset($_POST["heslo"])) {
                 $db_server = "localhost";
-                $db_meno = "roo";
+                $db_meno = "root";
                 $db_heslo = "vertrigo";
                 $db_nazov = "udaje";
 
                 $pripojenie = mysqli_connect($db_server, $db_meno, $db_heslo, $db_nazov);
 
-                if(!mysqli_connect_error()) {           // mozeme pouzit aj mysqli_connect_errno() -> vyhodi cislo chyby
-                    echo "ste pripojeny";
+                $meno = $_POST["login"];
+                $heslo = $_POST["heslo"];
+
+                $dopyt = "INSERT INTO pouzivatelia (meno, heslo)
+                            VALUES ('$meno', '$heslo')";
+
+                $odoslanie = mysqli_query($pripojenie, $dopyt);
+
+                if($odoslanie) {
+                    echo "registracia prebehla uspesne";
                 }
                 else {
-                    die("chyba pripojenia".mysqli_connect_error());
+                    die("chyba neodoslali ste nic");
                 }
-            }
-        }
 
+
+
+                
+        }
+    }
 
 
 
