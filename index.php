@@ -18,17 +18,17 @@
         if(isset($_POST["tlacidlo"])) {
             if(isset($_POST["login"]) && isset($_POST["heslo"])) {
                 $db_server = "localhost";
-                $db_meno = "root";
+                $db_meno = "roo";
                 $db_heslo = "vertrigo";
                 $db_nazov = "udaje";
 
                 $pripojenie = mysqli_connect($db_server, $db_meno, $db_heslo, $db_nazov);
 
-                if($pripojenie) {
+                if(!mysqli_connect_error()) {           // mozeme pouzit aj mysqli_connect_errno() -> vyhodi cislo chyby
                     echo "ste pripojeny";
                 }
                 else {
-                    die("chyba pripojenia");
+                    die("chyba pripojenia".mysqli_connect_error());
                 }
             }
         }
