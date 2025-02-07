@@ -14,5 +14,33 @@
         <input type="submit" name="tlacidlo" value="Prihlasiť sa">
     </form>
 
+    <?php
+        if(isset($_POST["tlacidlo"])) {
+            if(isset($_POST["login"]) && isset($_POST["heslo"])) {
+                $db_server = "localhost";
+                $db_meno = "root";
+                $db_heslo = "vertrigo";
+                $db_nazov = "udaje";
+
+                $pripojenie = mysqli_connect($db_server, $db_meno, $db_heslo, $db_nazov);
+
+                if($pripojenie) {
+                    echo "ste pripojeny";
+                }
+                else {
+                    die("chyba pripojenia");
+                }
+            }
+        }
+
+
+
+
+
+    ?>
+
+
+
+
 </body>
 </html>
