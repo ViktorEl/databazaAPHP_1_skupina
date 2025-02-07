@@ -22,14 +22,11 @@
 
 
     <?php
+    include "funkcie.php";
         if(isset($_POST["tlacidlo"])) {
             if(isset($_POST["login"]) && isset($_POST["heslo"])) {
-                $db_server = "localhost";
-                $db_meno = "root";
-                $db_heslo = "vertrigo";
-                $db_nazov = "udaje";
 
-                $pripojenie = mysqli_connect($db_server, $db_meno, $db_heslo, $db_nazov);
+            pripojenieDoDatabazy("localhost", "root", "vertrigo", "udaje");
 
                 $meno = $_POST["login"];
                 $heslo = $_POST["heslo"];
@@ -47,34 +44,6 @@
                 }        
         }
     }
-
-    if(isset($_POST["vymaz"])) {
-        if(isset($_POST["vymazMeno"])) {
-            $db_server = "localhost";
-                $db_meno = "root";
-                $db_heslo = "vertrigo";
-                $db_nazov = "udaje";
-
-                $pripojenie = mysqli_connect($db_server, $db_meno, $db_heslo, $db_nazov);
-
-            $menoNaZmazanie = $_POST["vymazMeno"];
-            $dopyt = "DELETE FROM pouzivatelia WHERE meno='$menoNaZmazanie'";
-
-            $vymazanie = mysqli_query($pripojenie, $dopyt);
-
-            if($vymazanie) {
-                echo "meno zmazane";
-            }
-            else {
-                die("chyba");
-            }
-
-
-        }
-    }
-
-
-
 
     ?>
 
