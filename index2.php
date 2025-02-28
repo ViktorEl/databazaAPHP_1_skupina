@@ -25,11 +25,32 @@
 
         <input type="submit" name="tlacidlo" value="Odoslať">
 
-
-
-
-
     </form>
+
+    <?php
+        if(isset($_POST["tlacidlo"])) {
+            if(isset($_POST["prostredie"]) && isset($_POST["jedlo"]) && isset($_POST["chutovka"]) && isset($_POST["hodnotenie"])) {
+                $db_server = "localhost";
+                $db_meno = "root";
+                $db_heslo = "vertrigo";
+                $db_nazov = "restauracia";
+
+                $pripojenie = mysqli_connect($db_server, $db_meno, $db_heslo, $db_nazov);
+
+                if(!$pripojenie) {
+                    die("chyba spojenia".mysqli_connect_error());
+                }
+                else {
+                    echo "ste pripojený";
+                }
+
+            }
+        }
+
+
+
+
+    ?>
 
 
 
