@@ -37,12 +37,30 @@
 
                 $pripojenie = mysqli_connect($db_server, $db_meno, $db_heslo, $db_nazov);
 
-                if(!$pripojenie) {
-                    die("chyba spojenia".mysqli_connect_error());
+                $prostredieValue = $_POST["prostredie"];
+                if($prostredieValue == "1") {
+                    $prostredie = "výborné";
+                elseif($prostredieValue == "2") {
+                    $prostredie = "dobré";
                 }
                 else {
-                    echo "ste pripojený";
+                    $prostredie = "zlé";
                 }
+                }
+                $jedloValue = $POST["jedlo"];
+                if($jedloValue == "1") {
+                    $jedlo = "výborné";
+                }
+                elseif($jedloValue == "2") {
+                    $jedlo = "dobré";
+                }
+                else {
+                    $jedlo = "zlé"
+                }
+
+                $chutovka = $_POST["chutovka"];
+                $hodnotenie = $_POST["hodnotenie"];
+
 
             }
         }
