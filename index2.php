@@ -36,18 +36,20 @@
                 $db_nazov = "restauracia";
 
                 $pripojenie = mysqli_connect($db_server, $db_meno, $db_heslo, $db_nazov);
+                mysqli_set_charset($pripojenie, "utf8");
 
                 $prostredieValue = $_POST["prostredie"];
                 if($prostredieValue == "1") {
                     $prostredie = "výborné";
+                }
                 elseif($prostredieValue == "2") {
                     $prostredie = "dobré";
                 }
                 else {
                     $prostredie = "zlé";
                 }
-                }
-                $jedloValue = $POST["jedlo"];
+         
+                $jedloValue = $_POST["jedlo"];
                 if($jedloValue == "1") {
                     $jedlo = "výborné";
                 }
@@ -55,17 +57,27 @@
                     $jedlo = "dobré";
                 }
                 else {
-                    $jedlo = "zlé"
+                    $jedlo = "zlé";
                 }
 
                 $chutovka = $_POST["chutovka"];
                 $hodnotenie = $_POST["hodnotenie"];
+           
+     
 
+        $dotaz = "INSERT INTO hodnotenie (prostredie, jedlo, chutovka, hodnotenie)
+        VALUES ('$prostredie', '$jedlo', '$chutovka', '$hodnotenie')";
 
-            }
+        $odoslanie = mysqli_query($pripojenie, $dotaz);
+
+        if(!$odoslanie) {
+            die("chyba odosielania".mysqli_error($pripojenie));
         }
-
-
+        else {
+            echo "Ďakujeme za vyplnenie dotaznika";
+        }
+    }
+    }
 
 
     ?>
