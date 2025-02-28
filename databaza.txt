@@ -1,0 +1,8 @@
+CREATE TABLE hodnotenie 
+(
+id 			INT AUTO_INCREMENT PRIMARY KEY,
+prostredie	VARCHAR(20) NOT NULL,
+jedlo		VARCHAR(20) NOT NULL,
+chutovka	VARCHAR(30) NOT NULL,
+hodnotenie	INT NOT NULL
+)
