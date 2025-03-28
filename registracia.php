@@ -27,10 +27,25 @@
 
                 $mail = $_POST["mail"];
                 $mail = mysqli_real_escape_string($connection, $mail);
+
+                $sqlQuery = "SELECT * FROM udaje";
+                $result = mysqli_query($connection, $sqlQuery);
+
+                while($row = mysqli_fetch_assoc($result)) {
+                    $kontrolaMail = $row["email"];
+                    if($mail == $kontrolaMail) {
+                        die("Chyba mail už existuje");
+                    }
+                }
+
+
+
                 $heslo = $_POST["heslo"];
                 $heslo = mysqli_real_escape_string($connection, $heslo);
 
-                $query = "INSERT INTO udaje (email, heslo) VALUES('$mail', '$heslo')";
+                $hashHeslo = password_hash($heslo, PASSWORD_DEFAULT);
+
+                $query = "INSERT INTO udaje (email, heslo) VALUES('$mail', '$hashHeslo')";
                 $send = mysqli_query($connection, $query);
                 if(!$send) {
                     die("Chyba odosielania");
