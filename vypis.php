@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -11,6 +12,7 @@
     <form action="vypis.php" method="get">
         <input type="submit" name="tlacidlo" value="Vypíš">
     </form>
+
 
     <?php
         if(isset($_GET["tlacidlo"])) {
@@ -27,7 +29,7 @@
 
             echo "<table>";
             
-            echo "<tr>
+            echo "<tr class='hlavicka'>
                     <th>id</th>
                     <th>prostredie</th>
                     <th>jedlo</th>

@@ -68,7 +68,7 @@
         $dotaz = "INSERT INTO hodnotenie (prostredie, jedlo, chutovka, hodnotenie)
         VALUES ('$prostredie', '$jedlo', '$chutovka', '$hodnotenie')";
 
-        $odoslanie = mysqli_query($pripojenie, $dotaz);
+        $odoslanie = mysqli_multi_query($pripojenie, $dotaz);
 
         if(!$odoslanie) {
             die("chyba odosielania".mysqli_error($pripojenie));
@@ -78,7 +78,6 @@
         }
     }
     }
-
 
     ?>
 

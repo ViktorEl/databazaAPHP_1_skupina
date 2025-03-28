@@ -1,0 +1,18 @@
+
+
+table {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+tr, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding: 3px;
+    text-align: center;
+}
+
+.hlavicka {
+    background-color: rgb(162, 247, 218);
+}
+
