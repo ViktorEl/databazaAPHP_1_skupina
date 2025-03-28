@@ -14,6 +14,41 @@
         <input type="submit" name="tlacidlo" value="Registruj"> <br>
     </form>
 
+    <?php
+        if(isset($_POST["tlacidlo"])) {
+            if(isset($_POST["mail"]) && isset($_POST["heslo"])) {
+                $db_server = "localhost";
+                $db_login = "root";
+                $db_heslo = "vertrigo";
+                $db_nazov = "prihlasenie";
+
+                $connection = mysqli_connect($db_server, $db_login, $db_heslo, $db_nazov);
+                mysqli_set_charset($connection, "utf8");
+
+                $mail = $_POST["mail"];
+                $mail = mysqli_real_escape_string($connection, $mail);
+                $heslo = $_POST["heslo"];
+                $heslo = mysqli_real_escape_string($connection, $heslo);
+
+                $query = "INSERT INTO udaje (email, heslo) VALUES('$mail', '$heslo')";
+                $send = mysqli_query($connection, $query);
+                if(!$send) {
+                    die("Chyba odosielania");
+                }
+                else {
+                    echo "Registracia prebehla uspesne";
+                }
+
+
+            }
+        }
+
+
+
+
+    ?>
+
+
 
     
 </body>
